@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HNGx - Stage One Task</title>
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background: url("/new-bg.jpg") no-repeat;
+        height: 100vh;
+        overflow: hidden;
+        background-size: cover;
+        color: white;
+      }
+
+      a {
+        color: black;
+        text-decoration: none;
+        background-color: white;
+        border-radius: 15px;
+        padding: 10px 20px;
+        font: inherit;
+        line-height: normal;
+      }
+      a:hover {
+        color: white;
+        background-color: transparent;
+        border: 2px solid white;
+      }
+
+      .container {
+        display: flex;
+        width: 100%;
+        height: 100%;
+      }
+
+      .profile_info {
+        display: flex;
+        gap: 40px;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 50px;
+        margin-top: 30px;
+      }
+
+      .username {
+        border: 3px solid white;
+        padding: 10px 20px;
+      }
+
+      .display_img img {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+      }
+
+      .day_time {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: 30px;
+        font-weight: 600;
+        margin-bottom: 50px;
+      }
+
+      .day_time p {
+        margin-bottom: 50px;
+      }
+
+      .track_github {
+        display: flex;
+        gap: 40px;
+        justify-content: center;
+        align-items: center;
+        font-size: 20px;
+        font-weight: 600;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="conatiner">
+      <div class="profile_info">
+        <h1 class="username" data-testid="slackUserName">Shegz</h1>
+
+        <p class="display_img" data-testid="slackDisplayImage">
+          <img src="/pfp_me.jpg" alt="Shegz" />
+        </p>
+      </div>
+
+      <div class="day_time">
+      <p class="current_week_day" data-testid="currentDayOfTheWeek">
+        Day: <span id="current-day"></span>
+      </p>
+
+      <p class="current_time" data-testid="currentUTCTime">
+        Time: <span id="utc-time"></span> UTC
+      </p>
+    </div>
+
+    <div class="track_github">
+      <p class="track" data-testid="myTrack">Track:  Frontend Track</p>
+
+      <p class="github_URL" data-testid="“githubURL”">
+        <a href="https://github.com/miss3persin/HNGx-Stage-One-Task">My Github</a>
+      </p>
+    </div>
+    </div>
+  </body>
+
+  <script>
+    function getCurrentUTCTime() {
+      var now = new Date();
+      var utcString = now.toISOString().slice(0, 19).replace("T", " ");
+      document.getElementById("utc-time").innerHTML = utcString;
+    }
+
+    setInterval(getCurrentUTCTime, 1000);
+
+    function getCurrentDayOfWeek() {
+      var daysOfWeek = [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+      ];
+      var now = new Date();
+      var dayOfWeek = daysOfWeek[now.getUTCDay()];
+      document.getElementById("current-day").innerHTML = dayOfWeek;
+    }
+
+    setInterval(getCurrentDayOfWeek, 1000);
+  </script>
+</html>
