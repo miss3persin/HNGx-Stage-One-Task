@@ -115,7 +115,7 @@
   <script>
     function getCurrentUTCTime() {
       var now = new Date();
-      var utcString = now.toISOString().slice(0, 19).replace("T", " ");
+      var utcString = now.getTime();
       document.getElementById("utc-time").innerHTML = utcString;
     }
 
